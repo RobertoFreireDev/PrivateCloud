@@ -9,4 +9,14 @@ public class FunctionsController : ControllerBase
     {
         return Ok(request);
     }
+
+    [HttpPost("run")]
+    public async Task<IActionResult> Execute([FromBody] FunctionDto request)
+    {
+        var outputLines = new List<string>();
+        var config = new SqliteConfig("mydatabase.db");
+
+        using var db = new SqliteHelper(config);
+        return Ok(db.ExecuteReader(request.Content));
+    }
 }

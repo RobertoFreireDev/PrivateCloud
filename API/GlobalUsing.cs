@@ -1,7 +1,9 @@
 ﻿global using System.Linq.Expressions;
+global using System.Data;
 
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Data.Sqlite;
 
 global using Shared.Dtos;
 

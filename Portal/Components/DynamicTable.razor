@@ -1,0 +1,14 @@
+﻿<MudTable Items="@rows" Hover="true" Bordered="true" Striped="true">
+    <HeaderContent>
+        @foreach (var col in columns)
+        {
+            <MudTh>@col</MudTh>
+        }
+    </HeaderContent>
+    <RowTemplate>
+        @foreach (var col in columns)
+        {
+            <MudTd DataLabel="@col">@context[col]</MudTd>
+        }
+    </RowTemplate>
+</MudTable>
