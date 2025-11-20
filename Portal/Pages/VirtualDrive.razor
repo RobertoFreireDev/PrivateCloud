@@ -1,3 +1,27 @@
 ﻿@page "/virtualdrive"
 
-<h3>Virtual Drive</h3>
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-6">
+    <MudStack AlignItems="AlignItems.Start" Spacing="2">
+        <MudFileUpload T="IReadOnlyList<IBrowserFile>" FilesChanged="UploadFiles">
+            <ActivatorContent>
+                <MudButton Variant="Variant.Filled"
+                           Color="Color.Secondary"
+                           StartIcon="@Icons.Material.Filled.CloudUpload">
+                </MudButton>
+            </ActivatorContent>
+        </MudFileUpload>
+    </MudStack>
+    <MudTable Items="files" Hover="true" Class="mt-4">
+        <RowTemplate>
+            <MudTd>
+                @context.Name
+            </MudTd>
+            <MudTd>
+                <MudIconButton Icon="@Icons.Material.Filled.Download"
+                               Color="Color.Primary"
+                               Variant="Variant.Filled"
+                               OnClick="@(() => DownloadFile(context))" />
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+</MudContainer>
