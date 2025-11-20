@@ -11,9 +11,9 @@
             </ActivatorContent>
         </MudFileUpload>
     </MudStack>
-    <MudTable Items="files" Hover="true" Class="mt-4">
+    <MudTable Items="files" Hover="true" Class="mt-4" Breakpoint="Breakpoint.SmAndDown">
         <RowTemplate>
-            <MudTd>
+            <MudTd Style="max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                 @context.Name
             </MudTd>
             <MudTd>
