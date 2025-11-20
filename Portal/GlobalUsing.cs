@@ -7,3 +7,7 @@ global using MudBlazor;
 global using MudBlazor.Services;
 
 global using Portal;
+global using Portal.Services;
+global using Portal.Services.Interfaces;
+
+global using Shared.Dtos;

@@ -1,0 +1,10 @@
+﻿<MudPaper Class="pa-4" Elevation="2">
+    <MudList T="PageDto">
+        @foreach (var pageItem in Pages)
+        {
+            <MudListItem T="PageDto" Value="@pageItem" OnClick="@(() => SelectPage(pageItem))" Style="cursor:pointer">
+                @pageItem.Name
+            </MudListItem>
+        }
+    </MudList>
+</MudPaper>
