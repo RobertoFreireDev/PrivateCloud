@@ -1,4 +1,7 @@
 ﻿@page "/pages"
 @page "/pages/{name}"
 
-<PageList Pages="@pages" OnPageSelected="HandlePageSelected"/>
+<PageList 
+    Pages="@pages"
+    OnPageCreated="HandlePageCreated"
+    OnPageSelected="HandlePageSelected"/>

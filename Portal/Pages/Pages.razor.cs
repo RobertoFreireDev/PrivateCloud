@@ -14,16 +14,33 @@ public partial class Pages : ComponentBase
     {
         try
         {
-            pages = await Http.GetFromJsonAsync<List<PageDto>>("pages");
+            await LoadPages();
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error fetching data: {ex.Message}");
+            Console.WriteLine(ex.Message);
         }
     }
 
     private void HandlePageSelected(PageDto page)
     {
-        Console.WriteLine($"Selected page: {page.Name}");
+    }
+
+    private async Task HandlePageCreated(PageDto page)
+    {
+        try
+        {
+            await Http.PostAsJsonAsync<PageDto>("pages", page);
+            await LoadPages();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    private async Task LoadPages()
+    {
+        pages = await Http.GetFromJsonAsync<List<PageDto>>("pages");
     }
 }

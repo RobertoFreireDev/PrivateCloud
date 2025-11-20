@@ -1,10 +1,16 @@
-﻿<MudPaper Class="pa-4" Elevation="2">
-    <MudList T="PageDto">
-        @foreach (var pageItem in Pages)
-        {
-            <MudListItem T="PageDto" Value="@pageItem" OnClick="@(() => SelectPage(pageItem))" Style="cursor:pointer">
-                @pageItem.Name
-            </MudListItem>
-        }
-    </MudList>
+﻿<MudPaper Class="pa-4" Elevation="0">
+    <MudStack Spacing="2">
+        <MudText Typo="Typo.h6">Create New Page</MudText>
+        <MudTextField @bind-Value="NewPageName" Label="Page Name" Variant="Variant.Outlined" />
+        <MudButton OnClick="CreatePage" Color="Color.Primary">Create Page</MudButton>
+        <MudDivider Class="my-2" />
+        <MudList T="PageDto">
+            @foreach (var pageItem in Pages)
+            {
+                <MudListItem T="PageDto" Value="@pageItem" OnClick="@(() => SelectPage(pageItem))" Style="cursor:pointer">
+                    @pageItem.Name
+                </MudListItem>
+            }
+        </MudList>
+    </MudStack>
 </MudPaper>
