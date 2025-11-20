@@ -1,3 +1,9 @@
-﻿<div id="editor" style="height:500px; width:100%;">
+﻿<div id="editor"
+     @ref="divElement" 
+     style="@Style"
+     @onkeyup="TriggerAceInstance"
+     @onpaste="TriggerAceInstance"
+     @onkeydown="TriggerAceInstance"
+     @onclick="TriggerAceInstance">
     @CodeContent
 </div>
