@@ -1,6 +1,6 @@
 # Overview
 
-This project aims to provide a lightweight, all-in-one local cloud platform running on a single Raspberry Pi serve
+This project aims to provide a lightweight, all-in-one local cloud platform running on a single Raspberry Pi server.
 
 # Services
 
