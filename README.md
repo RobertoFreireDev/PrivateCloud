@@ -9,7 +9,7 @@ Basic user:
 - Public Pages
 
 Admin:
-- Function
+- Function (with console)
 - Database
 - Message Queue
 - Page Management

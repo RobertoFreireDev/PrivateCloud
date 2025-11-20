@@ -1,5 +1,5 @@
 ﻿namespace Portal.Components;
 
-public partial class NavMenu
+public partial class NavMenu : ComponentBase
 {
 }

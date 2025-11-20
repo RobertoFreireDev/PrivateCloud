@@ -1,0 +1,18 @@
+﻿namespace Portal.Pages;
+
+public partial class Home : ComponentBase
+{
+    public string content = "function hello() {\n\tconsole.log('Hello, World!');\n}";
+
+    private Task OnContentChanged(string value)
+    {
+        Console.WriteLine("CONTENT CHANGED: " + value);
+        return Task.CompletedTask;
+    }
+
+    private Task OnSelectedContentChanged(string value)
+    {
+        Console.WriteLine("SELECTED CHANGED: " + value);
+        return Task.CompletedTask;
+    }
+}
