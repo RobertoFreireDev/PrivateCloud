@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="mydatabase.db" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Shared\Shared.csproj" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.11" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.11" />

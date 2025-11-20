@@ -1,4 +1,4 @@
-﻿window.AceEditorInit = function () {
+﻿window.AceEditorInit = function (mode) {
     if (!window.ace) {
         setTimeout(AceEditorInit, 30);
         return;
@@ -9,7 +9,7 @@
 
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
-    editor.session.setMode("ace/mode/javascript");
+    editor.session.setMode("ace/mode/" + mode);
     editor.setOptions({
         fontSize: "14px",
         showPrintMargin: false,

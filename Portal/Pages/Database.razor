@@ -1,7 +1,8 @@
 ﻿@page "/databases"
 
 <MudContainer MaxWidth="MaxWidth.Medium" Class="mt-4">
-    <JsEditor CodeContent="@content"
+    <JsEditor Mode="sql"
+              CodeContent="@content"
               Style="height:500px; width:100%;"
               ContentChanged="@OnContentChanged"
               SelectedContentChanged="@OnSelectedContentChanged" />

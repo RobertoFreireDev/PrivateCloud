@@ -1,6 +1,7 @@
 ﻿@page "/"
 
-<JsEditor CodeContent="@content"
+<JsEditor Mode="javascript"
+          CodeContent="@content"
           Style="height:500px; width:100%;"
           ContentChanged="@OnContentChanged"
           SelectedContentChanged="@OnSelectedContentChanged" />

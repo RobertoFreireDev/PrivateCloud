@@ -15,6 +15,9 @@ public partial class JsEditor : ComponentBase
     public EventCallback<string> ContentChanged { get; set; }
 
     [Parameter]
+    public string Mode { get; set; }
+
+    [Parameter]
     public EventCallback<string> SelectedContentChanged { get; set; }
 
     [Inject]
@@ -30,7 +33,7 @@ public partial class JsEditor : ComponentBase
     {
         if (firstRender)
         {
-            await JS.InvokeVoidAsync("AceEditorInit");
+            await JS.InvokeVoidAsync("AceEditorInit", Mode);
         }
     }
 
