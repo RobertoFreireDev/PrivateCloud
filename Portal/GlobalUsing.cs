@@ -11,6 +11,5 @@ global using MudBlazor;
 global using MudBlazor.Services;
 
 global using Portal;
-global using Portal.Config;
 
 global using Shared.Dtos;

@@ -21,8 +21,8 @@ Notes:
 
 For external device:
 
-- use device ip. https://192.168.100.186:7089
-- use localhost. https://localhost:7089/
+- use device ip: https://192.168.100.186:3001 and http://192.168.100.186:3000/
+- use localhost. https://localhost:3001/ and http://localhost:3000
 
 SQLlite commands:
 

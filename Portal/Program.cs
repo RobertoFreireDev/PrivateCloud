@@ -2,13 +2,16 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-var appSettings = builder.Configuration.Get<AppSettings>();
-
 builder.Services.AddMudServices();
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(
-        appSettings.IsLocal ? appSettings.LocalApiBaseUrl : appSettings.ApiBaseUrl
-    ) });
+builder.Services.AddScoped(sp =>
+{
+    var navManager = sp.GetRequiredService<NavigationManager>();
+    var uriBuilder = new UriBuilder(navManager.BaseUri)
+    {
+        Port = 3000
+    };
+    return new HttpClient { BaseAddress = uriBuilder.Uri };
+});
 
 await builder.Build().RunAsync();
