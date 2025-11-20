@@ -2,9 +2,6 @@
 
 public partial class Pages : ComponentBase
 {
-    [Parameter]
-    public string? Name { get; set; }
-
     [Inject]
     public HttpClient Http { get; set; }
 
@@ -22,15 +19,18 @@ public partial class Pages : ComponentBase
         }
     }
 
-    private void HandlePageSelected(PageDto page)
+    private void HandlePageSelected(TItemDto item)
     {
     }
 
-    private async Task HandlePageCreated(PageDto page)
+    private async Task HandlePageCreated(TItemDto item)
     {
         try
         {
-            await Http.PostAsJsonAsync<PageDto>("pages", page);
+            await Http.PostAsJsonAsync<PageDto>("pages", new PageDto()
+            {
+                Name = item.Name
+            });
             await LoadPages();
         }
         catch (Exception ex)

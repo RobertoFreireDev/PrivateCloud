@@ -1,6 +1,5 @@
 ﻿namespace Shared.Dtos;
 
-public class PageDto
+public class PageDto : TItemDto
 {
-    public string Name { get; set; }
 }

@@ -1,0 +1,16 @@
+﻿<MudPaper Class="pa-4" Elevation="0">
+    <MudStack Spacing="2">
+        <MudText Typo="Typo.h6">Create new Item</MudText>
+        <MudTextField @bind-Value="NewItemName" Label="New name" Variant="Variant.Outlined" />
+        <MudButton OnClick="CreateItem" Color="Color.Primary">Create</MudButton>
+        <MudDivider Class="my-2" />
+        <MudList T="TItemDto">
+            @foreach (var item in Items)
+            {
+                <MudListItem T="TItemDto" Value="@item" OnClick="@(() => SelectItem(item))" Style="cursor:pointer">
+                    @item.Name
+                </MudListItem>
+            }
+        </MudList>
+    </MudStack>
+</MudPaper>

@@ -1,7 +1,5 @@
 ﻿@page "/pages"
-@page "/pages/{name}"
 
-<PageList 
-    Pages="@pages"
-    OnPageCreated="HandlePageCreated"
-    OnPageSelected="HandlePageSelected"/>
+<GenericList Items="@pages.Select(p => new TItemDto() { Name = p.Name }).ToList()"
+            OnItemCreated="HandlePageCreated"
+            OnItemSelected="HandlePageSelected" />

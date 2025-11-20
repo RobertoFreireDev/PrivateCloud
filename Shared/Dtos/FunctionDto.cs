@@ -1,8 +1,6 @@
 ﻿namespace Shared.Dtos;
 
-public class FunctionDto
+public class FunctionDto : TItemDto
 {
-    public string Name { get; set; }
-
     public string Content { get; set; }
 }
