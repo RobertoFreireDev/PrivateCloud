@@ -1,20 +1,7 @@
 ﻿@page "/"
-@inject IJSRuntime JS
 
-<div id="editor" style="height:500px; width:100%;">
-    function foo(items) {
-        var x = "All this is syntax highlighted";
-        return x;
-    }
-</div>
+<JsEditor CodeContent="@content" />
 
 @code {
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await JS.InvokeVoidAsync("AceEditorInit");
-        }
-    }
+    public string content = "function hello() {\n\tconsole.log('Hello, World!');\n}";
 }
-
