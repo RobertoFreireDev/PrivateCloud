@@ -16,4 +16,3 @@ Admin:
 - Logs
 - Scheduler (trigger function)
 - Virtual Drive (upload/download files)
-- Computer info (memory, storage and cpu)
