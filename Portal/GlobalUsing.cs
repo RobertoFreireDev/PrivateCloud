@@ -1,4 +1,6 @@
-﻿global using Microsoft.AspNetCore.Components;
+﻿global using System.Net.Http.Json;
+
+global using Microsoft.AspNetCore.Components;
 global using Microsoft.AspNetCore.Components.Forms;
 global using Microsoft.AspNetCore.Components.Web;
 global using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -8,7 +10,6 @@ global using MudBlazor;
 global using MudBlazor.Services;
 
 global using Portal;
-global using Portal.Services;
-global using Portal.Services.Interfaces;
+global using Portal.Config;
 
 global using Shared.Dtos;

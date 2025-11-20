@@ -2,17 +2,24 @@
 
 public partial class Pages : ComponentBase
 {
-    [Inject]
-    public IPageService pageService { get; set; }
-
     [Parameter]
     public string? Name { get; set; }
 
-    private List<PageDto> pages { get; set; }
+    [Inject]
+    public HttpClient Http { get; set; }
+
+    private List<PageDto> pages { get; set; } = new();
 
     protected override async Task OnInitializedAsync()
     {
-        pages = await pageService.GetPages(); 
+        try
+        {
+            pages = await Http.GetFromJsonAsync<List<PageDto>>("pages");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching data: {ex.Message}");
+        }
     }
 
     private void HandlePageSelected(PageDto page)

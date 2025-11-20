@@ -5,6 +5,9 @@ public partial class VirtualDrive : ComponentBase
     [Inject]
     public IJSRuntime JS { get; set; }
 
+    [Inject]
+    public HttpClient Http { get; set; }
+
     private List<IBrowserFile> files = new();
 
     private async Task UploadFiles(IReadOnlyList<IBrowserFile> files)
