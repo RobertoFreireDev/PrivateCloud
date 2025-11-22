@@ -4,7 +4,8 @@ public partial class DynamicTable : ComponentBase
 {
     [Parameter]
     public string JsonString { get; set; }
-
+    
+    private string errorMessage = string.Empty;
     private List<Dictionary<string, object?>> rows = new();
     private List<string> columns = new();
 
@@ -17,6 +18,7 @@ public partial class DynamicTable : ComponentBase
     {
         rows.Clear();
         columns.Clear();
+        errorMessage = string.Empty;
 
         if (string.IsNullOrWhiteSpace(JsonString))
             return;
@@ -51,6 +53,7 @@ public partial class DynamicTable : ComponentBase
         {
             rows.Clear();
             columns.Clear();
+            errorMessage = JsonString;
         }
     }
 }

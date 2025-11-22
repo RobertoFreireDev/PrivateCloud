@@ -28,8 +28,14 @@ SQLlite commands:
 
 CREATE TABLE IF NOT EXISTS Users (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        Name TEXT)
+                        Name TEXT);
+                        
+                        
 
-INSERT INTO Users (Name) VALUES ("Roberto")
+INSERT INTO Users (Name) VALUES ('Roberto');
 
-SELECT * FROM Users
+SELECT * FROM Users;
+
+DELETE FROM Users;
+
+DROP TABLE IF EXISTS Users;

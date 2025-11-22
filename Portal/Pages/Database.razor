@@ -1,15 +1,15 @@
 ﻿@page "/databases"
 
-<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-4">
+<div>
     <JsEditor Mode="sql"
               CodeContent="@content"
               Style="height:500px; width:100%;"
               ContentChanged="@OnContentChanged"
               SelectedContentChanged="@OnSelectedContentChanged" />
     <MudPaper Class="pa-4">
-        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="ExecuteFunction">
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="ExecuteFunction" Disabled="@loading">
             Execute
         </MudButton>
         <DynamicTable JsonString="@ConsoleText"></DynamicTable>
     </MudPaper>
-</MudContainer>
+</div>

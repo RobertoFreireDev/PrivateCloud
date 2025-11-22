@@ -9,6 +9,8 @@ public partial class Database : ComponentBase
 
     private string ConsoleText = "";
 
+    private bool loading = false;
+
     private async Task OnContentChanged(string value)
     {
         content = value;
@@ -23,6 +25,8 @@ public partial class Database : ComponentBase
     {
         try
         {
+            loading = true;
+            StateHasChanged();
             var response = await Http.PostAsJsonAsync<FunctionDto>("functions/run", new FunctionDto()
             {
                 Name = "Temp",
@@ -32,6 +36,8 @@ public partial class Database : ComponentBase
             response.EnsureSuccessStatusCode();
             var resultString = await response.Content.ReadAsStringAsync();
             ConsoleText = resultString;
+            loading = false;
+            StateHasChanged();
         }
         catch (Exception ex)
         {
