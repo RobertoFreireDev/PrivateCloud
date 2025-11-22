@@ -1,6 +1,6 @@
 ﻿namespace Portal.Components;
 
-public partial class JsEditor : ComponentBase
+public partial class AceEditor : ComponentBase
 {
     [Parameter]
     public string CodeContent { get; set; } = string.Empty;
@@ -23,7 +23,7 @@ public partial class JsEditor : ComponentBase
     [Inject]
     public IJSRuntime JS { get; set; }
 
-    private DotNetObjectReference<JsEditor>? objRef;
+    private DotNetObjectReference<AceEditor>? objRef;
 
     private bool _disposed = false;
 
@@ -44,16 +44,16 @@ public partial class JsEditor : ComponentBase
     }
 
     [JSInvokable]
-    public async Task ReceiveCode(string feedback)
+    public async Task ReceiveCode(string code)
     {
-        CodeContent = feedback;
+        CodeContent = code;
         await ContentChanged.InvokeAsync(CodeContent);
     }
 
     [JSInvokable]
-    public async Task ReceiveSelectedCode(string feedback)
+    public async Task ReceiveSelectedCode(string selectedCode)
     {
-        SelectedContent = feedback;
+        SelectedContent = selectedCode;
         await SelectedContentChanged.InvokeAsync(SelectedContent);
     }
 

@@ -5,9 +5,11 @@ public partial class Database : ComponentBase
     [Inject]
     public HttpClient Http { get; set; }
 
-    public string content = "";
+    public string content = string.Empty;
 
-    private string ConsoleText = "";
+    public string selectedContent = string.Empty;
+
+    private string consoleText = string.Empty;
 
     private bool loading = false;
 
@@ -18,7 +20,7 @@ public partial class Database : ComponentBase
 
     private async Task OnSelectedContentChanged(string value)
     {
-        return;
+        selectedContent = value;
     }
 
     private async Task ExecuteFunction()
@@ -30,12 +32,12 @@ public partial class Database : ComponentBase
             var response = await Http.PostAsJsonAsync<FunctionDto>("functions/run", new FunctionDto()
             {
                 Name = "Temp",
-                Content = content
+                Content = string.IsNullOrWhiteSpace(selectedContent) ? content : selectedContent
             });
 
             response.EnsureSuccessStatusCode();
             var resultString = await response.Content.ReadAsStringAsync();
-            ConsoleText = resultString;
+            consoleText = resultString;
             loading = false;
             StateHasChanged();
         }

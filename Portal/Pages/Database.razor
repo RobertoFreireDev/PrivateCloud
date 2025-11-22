@@ -1,7 +1,7 @@
 ﻿@page "/databases"
 
 <div>
-    <JsEditor Mode="sql"
+    <AceEditor Mode="sql"
               CodeContent="@content"
               Style="height:500px; width:100%;"
               ContentChanged="@OnContentChanged"
@@ -10,6 +10,6 @@
         <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="ExecuteFunction" Disabled="@loading">
             Execute
         </MudButton>
-        <DynamicTable JsonString="@ConsoleText"></DynamicTable>
+        <DynamicTable JsonString="@consoleText"></DynamicTable>
     </MudPaper>
 </div>
