@@ -13,6 +13,7 @@ public partial class VirtualDrive : ComponentBase
     protected override async Task OnInitializedAsync()
     {
         files = await Http.GetFromJsonAsync<List<FileDto>>("virtualdrive");
+        StateHasChanged();
     }
 
     private async Task UploadFiles(IReadOnlyList<IBrowserFile> files)
@@ -23,8 +24,12 @@ public partial class VirtualDrive : ComponentBase
 
             try
             {
-                await Http.PostAsJsonAsync("virtualdrive", fileDto);
-                this.files.Add(fileDto);
+                var response = await Http.PostAsJsonAsync("virtualdrive", fileDto);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    this.files.Add(fileDto);
+                }
             }
             catch (Exception ex)
             {
@@ -36,6 +41,23 @@ public partial class VirtualDrive : ComponentBase
     private async Task DownloadFile(FileDto file)
     {
         await JS.InvokeVoidAsync("downloadFileFromBase64", file.Name, file.Base64, file.ContentType);
+    }
+
+    private async Task DeleteFile(FileDto file)
+    {
+        try
+        {
+            var response = await Http.DeleteAsync($"virtualdrive/{file.Name}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                this.files.Remove(file);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 
     private async Task<FileDto> ConvertToFileDto(IBrowserFile file)

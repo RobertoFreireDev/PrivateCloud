@@ -1,6 +1,6 @@
 ﻿@page "/virtualdrive"
 
-<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-6">
+<div style="margin: 10px;">
     <MudStack AlignItems="AlignItems.Start" Spacing="2">
         <MudFileUpload T="IReadOnlyList<IBrowserFile>" FilesChanged="UploadFiles">
             <ActivatorContent>
@@ -21,7 +21,12 @@
                                Color="Color.Primary"
                                Variant="Variant.Filled"
                                OnClick="@(() => DownloadFile(context))" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete"
+                               Color="Color.Error"
+                               Variant="Variant.Outlined"
+                               Class="ml-2"
+                               OnClick="@(() => DeleteFile(context))" />
             </MudTd>
         </RowTemplate>
     </MudTable>
-</MudContainer>
+</div>

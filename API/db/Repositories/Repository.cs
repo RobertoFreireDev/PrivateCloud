@@ -60,6 +60,19 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
         return true;
     }
 
+    public async Task<bool> DeleteByNameAsync(string name)
+    {
+        var entity = await _dbSet.FirstOrDefaultAsync(e => e.Name == name);
+        if (entity == null)
+        {
+            return false;
+        }
+
+        _dbSet.Remove(entity);
+        await _context.SaveChangesAsync();
+        return true;
+    }
+
     public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
     {
         return await _dbSet.Where(predicate).ToListAsync();

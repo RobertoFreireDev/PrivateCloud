@@ -2,5 +2,4 @@
 
 public class PageEntity : BaseEntity
 {
-    public string Name { get; set; } = string.Empty;
 }

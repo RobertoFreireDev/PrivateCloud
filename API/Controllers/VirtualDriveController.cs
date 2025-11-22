@@ -21,4 +21,10 @@ public class VirtualDriveController(IRepository<FileEntity> fileRepository) : Co
                 ContentType = request.ContentType
             }));
     }
+
+    [HttpDelete("{name}")]
+    public async Task<IActionResult> DeleteByName(string name)
+    {
+        return Ok(await fileRepository.DeleteByNameAsync(name));
+    }
 }
