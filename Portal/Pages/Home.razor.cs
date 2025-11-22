@@ -9,10 +9,4 @@ public partial class Home : ComponentBase
         Console.WriteLine("CONTENT CHANGED: " + value);
         return Task.CompletedTask;
     }
-
-    private Task OnSelectedContentChanged(string value)
-    {
-        Console.WriteLine("SELECTED CHANGED: " + value);
-        return Task.CompletedTask;
-    }
 }

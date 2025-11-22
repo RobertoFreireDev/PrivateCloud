@@ -5,8 +5,8 @@
         <MudFileUpload T="IReadOnlyList<IBrowserFile>" FilesChanged="UploadFiles">
             <ActivatorContent>
                 <MudButton Variant="Variant.Filled"
-                           Color="Color.Secondary"
-                           StartIcon="@Icons.Material.Filled.CloudUpload">
+                Color="Color.Secondary"
+                StartIcon="@Icons.Material.Filled.CloudUpload">
                 </MudButton>
             </ActivatorContent>
         </MudFileUpload>
@@ -18,15 +18,24 @@
             </MudTd>
             <MudTd>
                 <MudIconButton Icon="@Icons.Material.Filled.Download"
-                               Color="Color.Primary"
-                               Variant="Variant.Filled"
-                               OnClick="@(() => DownloadFile(context))" />
+                Color="Color.Primary"
+                Variant="Variant.Filled"
+                OnClick="@(() => DownloadFile(context))" />
                 <MudIconButton Icon="@Icons.Material.Filled.Delete"
-                               Color="Color.Error"
-                               Variant="Variant.Outlined"
-                               Class="ml-2"
-                               OnClick="@(() => DeleteFile(context))" />
+                Color="Color.Error"
+                Variant="Variant.Outlined"
+                Class="ml-2"
+                OnClick="@(() => DeleteFile(context))" />
             </MudTd>
         </RowTemplate>
     </MudTable>
+    @if (ErrorMessages.Count > 0)
+    {
+        foreach (var errorMessage in ErrorMessages)
+        {
+            <MudAlert Severity="Severity.Error" Class="mt-4">
+                @errorMessage
+            </MudAlert>
+        }
+    }
 </div>

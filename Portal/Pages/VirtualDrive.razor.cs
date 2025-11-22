@@ -10,14 +10,18 @@ public partial class VirtualDrive : ComponentBase
 
     private List<FileDto> files = new();
 
+    private List<string> ErrorMessages = new();
+
     protected override async Task OnInitializedAsync()
     {
+        ErrorMessages.Clear();
         files = await Http.GetFromJsonAsync<List<FileDto>>("virtualdrive");
         StateHasChanged();
     }
 
     private async Task UploadFiles(IReadOnlyList<IBrowserFile> files)
     {
+        ErrorMessages.Clear();
         foreach (var file in files)
         {
             var fileDto = await ConvertToFileDto(file);
@@ -29,6 +33,10 @@ public partial class VirtualDrive : ComponentBase
                 if (response.IsSuccessStatusCode)
                 {
                     this.files.Add(fileDto);
+                }
+                else
+                {
+                    ErrorMessages.Add($"Failed to upload file {fileDto.Name}");
                 }
             }
             catch (Exception ex)
@@ -45,6 +53,7 @@ public partial class VirtualDrive : ComponentBase
 
     private async Task DeleteFile(FileDto file)
     {
+        ErrorMessages.Clear();
         try
         {
             var response = await Http.DeleteAsync($"virtualdrive/{file.Name}");
@@ -52,6 +61,10 @@ public partial class VirtualDrive : ComponentBase
             if (response.IsSuccessStatusCode)
             {
                 this.files.Remove(file);
+            }
+            else
+            {
+                ErrorMessages.Add($"Failed to delete file {file.Name}");
             }
         }
         catch (Exception ex)

@@ -17,9 +17,6 @@ public partial class AceEditor : ComponentBase
     [Parameter]
     public string Mode { get; set; }
 
-    [Parameter]
-    public EventCallback<string> SelectedContentChanged { get; set; }
-
     [Inject]
     public IJSRuntime JS { get; set; }
 
@@ -54,7 +51,6 @@ public partial class AceEditor : ComponentBase
     public async Task ReceiveSelectedCode(string selectedCode)
     {
         SelectedContent = selectedCode;
-        await SelectedContentChanged.InvokeAsync(SelectedContent);
     }
 
     protected virtual void Dispose(bool disposing)

@@ -3,9 +3,8 @@
 <div>
     <AceEditor Mode="sql"
               CodeContent="@content"
-              Style="height:500px; width:100%;"
-              ContentChanged="@OnContentChanged"
-              SelectedContentChanged="@OnSelectedContentChanged" />
+              Style="height:200px; width:100%;"
+              ContentChanged="@OnContentChanged"/>
     <MudPaper Class="pa-4">
         <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="ExecuteFunction" Disabled="@loading">
             Execute

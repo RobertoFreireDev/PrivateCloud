@@ -7,8 +7,6 @@ public partial class Database : ComponentBase
 
     public string content = string.Empty;
 
-    public string selectedContent = string.Empty;
-
     private string consoleText = string.Empty;
 
     private bool loading = false;
@@ -16,11 +14,6 @@ public partial class Database : ComponentBase
     private async Task OnContentChanged(string value)
     {
         content = value;
-    }
-
-    private async Task OnSelectedContentChanged(string value)
-    {
-        selectedContent = value;
     }
 
     private async Task ExecuteFunction()
@@ -32,7 +25,7 @@ public partial class Database : ComponentBase
             var response = await Http.PostAsJsonAsync<FunctionDto>("functions/run", new FunctionDto()
             {
                 Name = "Temp",
-                Content = string.IsNullOrWhiteSpace(selectedContent) ? content : selectedContent
+                Content = content
             });
 
             response.EnsureSuccessStatusCode();
