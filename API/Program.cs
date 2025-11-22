@@ -10,13 +10,25 @@ builder.Services.AddCors(options =>
     });
 });
 
+ApiConfig.CustomDb = builder.Configuration.GetConnectionString("CustomDb");
+ApiConfig.SystemDb = builder.Configuration.GetConnectionString("SystemDb");
+
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseInMemoryDatabase("TestDatabase"));
+{
+    options.UseSqlite(ApiConfig.SystemDb);
+});
+
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 builder.Services.AddControllers();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.EnsureCreated();
+}
 
 app.UseCors("AllowAll");
 app.UseAuthorization();

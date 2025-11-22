@@ -13,10 +13,7 @@ public class FunctionsController : ControllerBase
     [HttpPost("run")]
     public async Task<IActionResult> Execute([FromBody] FunctionDto request)
     {
-        var outputLines = new List<string>();
-        var config = new SqliteConfig("mydatabase.db");
-
-        using var db = new SqliteHelper(config);
+        using var db = new SqliteHelper(ApiConfig.CustomDb);
         return Ok(db.ExecuteReader(request.Content));
     }
 }

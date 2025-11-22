@@ -1,15 +1,12 @@
-﻿using System.Reflection.PortableExecutable;
-using System.Text.Json;
-
-namespace API.db;
+﻿namespace API.db;
 
 public class SqliteHelper : IDisposable
 {
     private readonly SqliteConnection _connection;
 
-    public SqliteHelper(SqliteConfig config)
+    public SqliteHelper(string connectionString)
     {
-        _connection = new SqliteConnection(config.GetConnectionString());
+        _connection = new SqliteConnection(connectionString);
         _connection.Open();
     }
 
