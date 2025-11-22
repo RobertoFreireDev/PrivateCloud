@@ -22,7 +22,7 @@ public partial class Database : ComponentBase
         {
             loading = true;
             StateHasChanged();
-            var response = await Http.PostAsJsonAsync<FunctionDto>("functions/run", new FunctionDto()
+            var response = await Http.PostAsJsonAsync<FunctionDto>("functions/db", new FunctionDto()
             {
                 Name = "Temp",
                 Content = content

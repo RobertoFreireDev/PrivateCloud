@@ -10,7 +10,7 @@ public class FunctionsController : ControllerBase
         return Ok(request);
     }
 
-    [HttpPost("run")]
+    [HttpPost("db")]
     public async Task<IActionResult> Execute([FromBody] FunctionDto request)
     {
         using var db = new SqliteHelper(ApiConfig.CustomDb);
